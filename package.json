@@ -1,0 +1,25 @@
+{
+  "name": "hardhat-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "npx hardhat clean",
+    "compile": "npx hardhat compile",
+    "coverage": "npx hardhat coverage",
+    "storage-layout": "npx hardhat check",
+    "test": "npx hardhat test",
+    "node": "npx hardhat node"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.19.0",
+    "hardhat-contract-sizer": "^2.10.0"
+  },
+  "dependencies": {
+    "ethers": "^6.8.1",
+    "hardhat-storage-layout": "^0.1.7"
+  }
+}
