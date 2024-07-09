@@ -1,9 +1,7 @@
 import { ethers } from "ethers";
 
 async function getBlockNumber(): Promise<number> {
-  const provider = new ethers.JsonRpcProvider(
-    "https://eth-mainnet.diamondswap.org/rpc"
-  );
+  const provider = new ethers.JsonRpcProvider("https://rpc.ankr.com/eth");
 
   const blockNumber: number = await provider.getBlockNumber();
 
