@@ -2,12 +2,8 @@
 pragma solidity ^0.8.18;
 
 contract ValidId {
-    function getAddress(uint256 id) public pure returns (address) {
-        return address(bytes20(bytes32(id)));
-    }
-
     function isValidId(address account, uint256 id) public pure returns (bool) {
-        return account == getAddress(id);
+        return account == address(bytes20(bytes32(id)));
     }
 
     function caculateId(
