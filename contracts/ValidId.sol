@@ -6,7 +6,7 @@ contract ValidId {
         return address(bytes20(bytes32(id)));
     }
 
-    function isValidid(uint256 id) external view returns (bool) {
+    function isValidId(uint256 id) external view returns (bool) {
         return msg.sender == getAddress(id);
     }
 
@@ -17,7 +17,7 @@ contract ValidId {
         return uint256(bytes32(abi.encodePacked(account, nonce)));
     }
 
-    function parseId(uint256 id) external pure returns (address, uint96) {
+    function parseId(uint256 id) public pure returns (address, uint96) {
         return (address(bytes20(bytes32(id))), uint96(id));
     }
 }
