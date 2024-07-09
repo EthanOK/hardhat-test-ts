@@ -6,18 +6,19 @@ import { privateKeyToAccount } from "viem/accounts";
 import { mainnet, sepolia } from "viem/chains";
 import "dotenv/config";
 
-let privateKey = process.env.PrivateKey;
-export const account = privateKeyToAccount(privateKey as Hex);
+export const account = privateKeyToAccount(process.env.PrivateKey as Hex);
 
 export const client = createWalletClient({
   account,
   chain: sepolia,
   transport: http(),
 });
-// console.log(mainnetTrustedSetupPath);
-const path = process.cwd() + "/node_modules/viem/trusted-setups/mainnet.json";
 
-const kzg = setupKzg(cKzg, path);
+// console.log(mainnetTrustedSetupPath);
+export const path =
+  process.cwd() + "/node_modules/viem/trusted-setups/mainnet.json";
+
+export const kzg = setupKzg(cKzg, path);
 
 const blobs = toBlobs({ data: stringToHex("Hi, I'm ETH. Who are you?") });
 
