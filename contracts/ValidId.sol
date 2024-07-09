@@ -6,8 +6,8 @@ contract ValidId {
         return address(bytes20(bytes32(id)));
     }
 
-    function isValidId(uint256 id) external view returns (bool) {
-        return msg.sender == getAddress(id);
+    function isValidId(address account, uint256 id) public pure returns (bool) {
+        return account == getAddress(id);
     }
 
     function caculateId(
