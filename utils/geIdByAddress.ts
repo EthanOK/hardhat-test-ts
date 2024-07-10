@@ -3,7 +3,7 @@ import { Address, encodePacked, Hex, hexToBigInt } from "viem";
 export function getUniqueId(account: Address, nonce: number): string {
   // abi.encodePacked(account, nonce)
   const data = encodePacked(["address", "uint96"], [account, BigInt(nonce)]);
-
+  // bytes => uint256
   const id = hexToBigInt(data).toString();
 
   console.log(id);
