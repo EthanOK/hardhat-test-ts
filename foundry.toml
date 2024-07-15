@@ -1,0 +1,13 @@
+[profile.default]
+src = 'contracts/src'
+out = 'out'
+libs = ['node_modules', 'contracts/lib']
+test = 'contracts/test'
+script = 'contracts/script'
+
+optimize = true
+runs = 200
+solc_version = '0.8.19'
+
+[rpc_endpoints]
+sepolia = "https://rpc.ankr.com/eth_sepolia"

@@ -4,21 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "npx hardhat clean",
-    "compile": "npx hardhat compile",
+    "clean": "npx hardhat clean && forge clean",
+    "compile": "npx hardhat compile && forge build",
     "coverage": "npx hardhat coverage",
     "storage-layout": "npx hardhat check",
-    "test": "npx hardhat test",
+    "test:hh": "npx hardhat test",
+    "test:ff": "forge test -vvv",
+    "test": "npx hardhat test && forge test -vvv",
     "node": "npx hardhat node"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@nomicfoundation/hardhat-foundry": "^1.1.2",
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "hardhat": "^2.19.0",
     "hardhat-contract-sizer": "^2.10.0"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6",
     "c-kzg": "^4.0.0-alpha.1",
     "dotenv": "^16.4.5",
     "ethers": "^6.8.1",
