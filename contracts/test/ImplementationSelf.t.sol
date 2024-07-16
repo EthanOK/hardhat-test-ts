@@ -27,7 +27,7 @@ contract ImplementationSelfTest is Test {
 
         console.log("proxy.owner()", ImplementationSelf(proxy).owner());
 
-        // attacker destructs the contract
+        // TODO:attacker destructs the contract
         vm.startPrank(attacker);
         implementationSelf.initialize(address(3), attacker);
         implementationSelf.selfDestruct();
