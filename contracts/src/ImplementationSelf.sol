@@ -21,6 +21,7 @@ contract ImplementationSelf is UUPSUpgradeable, OwnableUpgradeable {
     }
 
     function selfDestruct() public onlyOwner {
+        // TODO:从 EVM >= Cancun 开始， selfdestruct 只会将帐户中的所有以太币发送给给定的接收者，而不会销毁合约。
         selfdestruct(payable(_msgSender()));
     }
 
