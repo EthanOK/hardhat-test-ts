@@ -28,7 +28,10 @@ contract DexAttackerTest is Test {
     address player = 0x6278A1E803A76796a3A1f7F6344fE874ebfe94B2;
     function setUp() external {
         // 配置 fork url; SEPOLIA_RPC_URL 为 .env 文件中的环境变量
-        uint256 forkId = vm.createFork(vm.envString("SEPOLIA_RPC_URL"));
+        uint256 forkId = vm.createFork(
+            vm.envString("SEPOLIA_RPC_URL"),
+            6337400
+        );
         vm.selectFork(forkId);
 
         dex = Dex(0x3fCE4Eb607faf7f690ec53C1593D8c01C5534cE1);
@@ -85,8 +88,6 @@ contract DexAttackerTest is Test {
         uint256 price6 = dex.getSwapPrice(address(token2), address(token1), 45);
         console.log("token1: ", price6);
         dex.swap(address(token2), address(token1), 45);
-
-        
 
         vm.stopPrank();
     }
