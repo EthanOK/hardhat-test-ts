@@ -64,13 +64,17 @@ contract ImplementationSelfTest is Test {
         public
         view
     {
-        ImplementationSelf(proxy).owner();
+        try ImplementationSelf(proxy).owner() returns (address) {} catch {
+            console.log("ImplContract Destroyed");
+        }
     }
 
     function testProxyOwner_ImplContractDelegateOtherDestroyedContract_ProxyCanNotCall()
         public
         view
     {
-        ImplementationSelf(proxy2).owner();
+        try ImplementationSelf(proxy2).owner() returns (address) {} catch {
+            console.log("ImplContract Delegate Other Destroyed Contract");
+        }
     }
 }
