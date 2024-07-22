@@ -6,9 +6,11 @@ import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/U
 
 contract ImplementationSelf is UUPSUpgradeable, OwnableUpgradeable {
     address implementAddress;
+
     constructor() {
         // _disableInitializers();
     }
+
     function initialize(address _imp, address _owner) public initializer {
         implementAddress = _imp;
         _transferOwnership(_owner);

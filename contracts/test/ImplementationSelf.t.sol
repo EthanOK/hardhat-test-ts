@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import {HelpUtils} from "./HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
 import {ImplementationSelf} from "../src/ImplementationSelf.sol";
 import {ERC1967Proxy} from "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
@@ -11,7 +12,7 @@ contract AttackContract {
     }
 }
 
-contract ImplementationSelfTest is Test {
+contract ImplementationSelfTest is Test, HelpUtils {
     uint256 constant private_key = 666666;
     address account = vm.addr(private_key);
     ImplementationSelf implementationSelf;
@@ -44,7 +45,17 @@ contract ImplementationSelfTest is Test {
             )
         );
 
-        console.log("proxy.owner()", ImplementationSelf(proxy).owner());
+        // console.log("proxy.owner()", ImplementationSelf(proxy).owner());
+        address implementation = HelpUtils.getImplementationAddress(proxy);
+        console.log(
+            "proxy.implementation code length:",
+            implementation.code.length
+        );
+        address implementation2 = HelpUtils.getImplementationAddress(proxy2);
+        console.log(
+            "proxy2.implementation code length:",
+            implementation2.code.length
+        );
 
         // TODO:attacker destructs the contract
         vm.startPrank(attacker);
@@ -58,23 +69,29 @@ contract ImplementationSelfTest is Test {
         implementationSelf2.initialize(address(attackContract), attacker);
         implementationSelf2.withdraw();
         vm.stopPrank();
+
+        console.log("Attack After:");
     }
 
     function testProxyOwner_ImplContractDestroyed_ProxyCanNotCallImplContract()
         public
         view
     {
-        try ImplementationSelf(proxy).owner() returns (address) {} catch {
-            console.log("ImplContract Destroyed");
-        }
+        address implementation = HelpUtils.getImplementationAddress(proxy);
+        console.log(
+            "proxy.implementation code length:",
+            implementation.code.length
+        );
     }
 
     function testProxyOwner_ImplContractDelegateOtherDestroyedContract_ProxyCanNotCall()
         public
         view
     {
-        try ImplementationSelf(proxy2).owner() returns (address) {} catch {
-            console.log("ImplContract Delegate Other Destroyed Contract");
-        }
+        address implementation = HelpUtils.getImplementationAddress(proxy2);
+        console.log(
+            "proxy2.implementation code length:",
+            implementation.code.length
+        );
     }
 }

@@ -22,6 +22,7 @@ contract SwappableTokenTwo is ERC20 {
         super._approve(owner, spender, amount);
     }
 }
+
 interface Dex {
     function swap(address from, address to, uint256 amount) external;
 
@@ -37,6 +38,7 @@ interface Dex {
         uint256 amount
     ) external view returns (uint256);
 }
+
 contract DexTwoAttackerTest is Test {
     Dex dex;
     IERC20 token1;
@@ -44,6 +46,7 @@ contract DexTwoAttackerTest is Test {
     SwappableTokenTwo token3;
 
     address player = 0x6278A1E803A76796a3A1f7F6344fE874ebfe94B2;
+
     function setUp() external {
         // 配置 fork url; SEPOLIA_RPC_URL 为 .env 文件中的环境变量
         uint256 forkId = vm.createFork(

