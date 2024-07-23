@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import {HelpUtils} from "./HelpUtils.sol";
@@ -8,6 +8,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract StakeAttack {
     address stake;
+
     constructor(address stake_) {
         stake = stake_;
     }
