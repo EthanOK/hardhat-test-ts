@@ -4,7 +4,7 @@ coverage
 coverage.json
 typechain
 typechain-types
-
+.idea
 # Hardhat files
 cache_hardhat
 cache
@@ -13,3 +13,4 @@ artifacts
 # Foundry files
 out
 broadcast
+bin

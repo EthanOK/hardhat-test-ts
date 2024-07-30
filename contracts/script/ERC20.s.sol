@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
@@ -10,10 +10,11 @@ contract ERC20Script is Script {
     function setUp() public {}
 
     function run() public {
-        vm.startBroadcast();
+        vm.startBroadcast(vm.envUint("TEST_PRIVATE_KEY"));
         token = new ERC20("Test Token", "TTT");
     }
 }
 
 // forge script ERC20Script --rpc-url sepolia
 // forge script --broadcast ERC20Script --rpc-url sepolia
+// forge script --verify --broadcast ERC20Script --rpc-url sepolia

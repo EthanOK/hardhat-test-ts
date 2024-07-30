@@ -4,6 +4,8 @@ out = 'out'
 libs = ['node_modules', 'contracts/lib']
 test = 'contracts/test'
 script = 'contracts/script'
+# Default: paris 
+evm_version = 'shanghai'
 
 optimize = true
 runs = 200
@@ -11,3 +13,12 @@ solc_version = '0.8.19'
 
 [rpc_endpoints]
 sepolia = "https://rpc.ankr.com/eth_sepolia"
+mainnet = "https://rpc.ankr.com/eth"
+base = "https://rpc.ankr.com/base"
+tbase = "https://rpc.ankr.com/base_sepolia"
+bsc = "https://rpc.ankr.com/bsc"
+tbsc = "https://rpc.ankr.com/bsc_testnet_chapel"
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
