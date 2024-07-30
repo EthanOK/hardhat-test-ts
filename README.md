@@ -1,5 +1,9 @@
 # Hardhat Integrate Foundry Project
 
+```
+git clone -b hardhat-foundry-demo https://github.com/EthanOK/hardhat-test-ts.git
+```
+
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 Try running some of the following tasks:

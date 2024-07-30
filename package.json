@@ -1,7 +1,7 @@
 {
-  "name": "hardhat-ts",
+  "name": "demo-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "base hardhat and foundry",
   "main": "index.js",
   "scripts": {
     "clean": "npx hardhat clean && forge clean",
