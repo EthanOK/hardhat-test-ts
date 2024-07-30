@@ -17,3 +17,7 @@ npx hardhat run scripts/deploy.ts
 ```shell
 npm install && forge install
 ```
+
+## 获取 standard-json-input,验证合约
+
+`forge verify-contract --show-standard-json-input 0x0000000000000000000000000000000000000000 Lock > cache/temp.json`

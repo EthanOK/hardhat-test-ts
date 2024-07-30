@@ -9,6 +9,8 @@ evm_version = 'shanghai'
 
 optimize = true
 runs = 200
+via_ir = false
+
 solc_version = '0.8.19'
 
 [rpc_endpoints]
