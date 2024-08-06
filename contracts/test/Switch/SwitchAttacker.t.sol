@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {Switch} from "../src/ethernaut/Switch.sol";
+import {Switch} from "../../src/ethernaut/Switch.sol";
 
 contract SwitchAttacker is Test {
     uint256 constant blockNumber = 6354896;

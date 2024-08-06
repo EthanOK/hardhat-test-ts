@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {Motorbike, Engine} from "../src/ethernaut/Motorbike.sol";
+import {Motorbike, Engine} from "../../src/ethernaut/Motorbike.sol";
 
 contract SelfDestruct {
     function selfDestruct(address account) external {

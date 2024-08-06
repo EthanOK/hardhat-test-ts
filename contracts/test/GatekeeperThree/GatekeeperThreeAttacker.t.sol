@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {GatekeeperThree, SimpleTrick} from "../src/ethernaut/GatekeeperThree.sol";
+import {GatekeeperThree, SimpleTrick} from "../../src/ethernaut/GatekeeperThree.sol";
 
 interface IGatekeeperThree {
     function construct0r() external;

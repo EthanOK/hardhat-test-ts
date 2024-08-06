@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {PuzzleProxy, PuzzleWallet} from "../src/ethernaut/PuzzleProxy.sol";
+import {PuzzleProxy, PuzzleWallet} from "../../src/ethernaut/PuzzleProxy.sol";
 
 contract PuzzleProxyAttackerTest is Test {
     address alice = 0x6278A1E803A76796a3A1f7F6344fE874ebfe94B2;

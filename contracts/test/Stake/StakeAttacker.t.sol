@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {Stake} from "../src/ethernaut/Stake.sol";
+import {Stake} from "../../src/ethernaut/Stake.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract StakeAttack {

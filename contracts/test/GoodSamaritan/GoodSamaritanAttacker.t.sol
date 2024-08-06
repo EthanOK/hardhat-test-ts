@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {GoodSamaritan, INotifyable, Wallet, Coin} from "../src/ethernaut/GoodSamaritan.sol";
+import {GoodSamaritan, INotifyable, Wallet, Coin} from "../../src/ethernaut/GoodSamaritan.sol";
 
 contract AttackGoodSamaritan is INotifyable {
     error NotEnoughBalance();

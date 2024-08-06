@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {IAlienCodex} from "../src/ethernaut/AlienCodex.sol";
+import {IAlienCodex} from "../../src/ethernaut/AlienCodex.sol";
 
 contract AlienCodexAttacker is Test {
     address constant alienCodex = 0x8Ee19B2836AE1833f47B90328e9F00dA848f0071;

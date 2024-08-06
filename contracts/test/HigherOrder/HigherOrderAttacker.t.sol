@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import {HelpUtils} from "./HelpUtils.sol";
+import {HelpUtils} from "../HelpUtils.sol";
 import {Test, console} from "forge-std/Test.sol";
-import {HigherOrder} from "../src/ethernaut/HigherOrder.sol";
+import {HigherOrder} from "../../src/ethernaut/HigherOrder.sol";
 
 contract HigherOrderAttacker is Test {
     address constant higherOrder = 0x1A71927eEeAe3b032ccf515D9c66464f12009B66;
