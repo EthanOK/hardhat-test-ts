@@ -23,9 +23,11 @@
     "hardhat-contract-sizer": "^2.10.0"
   },
   "dependencies": {
+    "@ethereumjs/vm": "^10.0.0",
     "@openzeppelin/contracts": "^4.9.6",
     "@openzeppelin/contracts-upgradeable": "^4.9.6",
     "c-kzg": "^4.0.0-alpha.1",
+    "deasync": "^0.1.30",
     "dotenv": "^16.4.5",
     "ethers": "^6.8.1",
     "hardhat-storage-layout": "^0.1.7",

@@ -435,6 +435,7 @@ export const ownerOf = async (tokenId: BigInt) => {
     address: erc721Address,
     functionName: "ownerOf",
     args: [tokenId],
+    authorizationList: undefined
   });
   return account;
 };
@@ -445,6 +446,7 @@ export const tokenURI = async (tokenId: BigInt) => {
     address: erc721Address,
     functionName: "tokenURI",
     args: [tokenId],
+    authorizationList: undefined
   });
   return uri;
 };
