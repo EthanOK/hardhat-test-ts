@@ -1,29 +1,27 @@
-# Ethernaut
+# Hardhat Integrate Foundry Project
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/OpenZeppelin?style=plastic&logo=twitter)](https://twitter.com/OpenZeppelin)
-[![OpenZeppelin Forum](https://img.shields.io/badge/Ethernaut%20Forum%20-discuss-blue?style=plastic&logo=discourse)](https://forum.openzeppelin.com/tag/ethernaut)
+```
+git clone -b hardhat-foundry-demo https://github.com/EthanOK/hardhat-test-ts.git
+```
 
-Ethernaut is a Web3/Solidity based wargame inspired by [overthewire](https://overthewire.org), to be played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'.
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-The game acts both as a tool for those interested in learning ethereum, and as a way to catalogue historical hacks as levels. There can be an infinite number of levels and the game does not require to be played in any particular order.
+Try running some of the following tasks:
 
-## Deployed Versions
+```shell
+npx hardhat help
+npx hardhat test
+REPORT_GAS=true npx hardhat test
+npx hardhat node
+npx hardhat run scripts/deploy.ts
+```
 
-You can find the current, official version at: [ethernaut.openzeppelin.com](https://ethernaut.openzeppelin.com)
+## install
 
-## GitHub Repository
+```shell
+npm install && forge install
+```
 
-[ethernaut](https://github.com/OpenZeppelin/ethernaut)
+## 获取 standard-json-input,验证合约
 
-# Partial Solve
-
-- [x] AlienCodex
-- [x] Dex
-- [x] DexTwo
-- [x] GatekeeperThree
-- [x] GoodSamaritan
-- [x] HigherOrder
-- [x] Motorbike
-- [x] PuzzleWallet
-- [x] Stake
-- [x] Switch
+`forge verify-contract --show-standard-json-input 0x0000000000000000000000000000000000000000 Lock > cache/temp.json`

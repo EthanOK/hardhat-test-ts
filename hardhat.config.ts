@@ -3,6 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-foundry";
 import "hardhat-contract-sizer";
 import "hardhat-storage-layout";
+import "solidity-docgen";
 import "dotenv/config";
 
 const config: HardhatUserConfig = {
