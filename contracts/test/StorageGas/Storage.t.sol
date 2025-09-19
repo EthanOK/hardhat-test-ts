@@ -22,11 +22,19 @@ contract StorageTest is Test {
 
         // storage cost: 100 (热存访问修改)
         // 100 + 686 = 786
-        storage_.deposit(alice, 3);
+        storage_.deposit(alice, 2);
 
         // storage cost: 2900 (非零值 => 非零值) + 2100 (冷存储访问) = 5000
         // 5000 + 686 = 5686
         storage_.deposit(bob, 1);
+
+        // storage cost: 100 (热存访问修改)
+        // 100 + 686 = 786
+        storage_.deposit(alice, 0);
+
+        //storage cost: 20000 （零值 => 非零值）  = 20000
+        // 20000 + 686 = 20686
+        storage_.deposit(alice, 1);
     }
 }
 
