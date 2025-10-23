@@ -1,6 +1,6 @@
 {
   "name": "demo-ts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "base hardhat and foundry",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "test:ff": "forge test -vvv",
     "test": "npx hardhat test && forge test -vvv",
     "node": "npx hardhat node",
-    "docgen": "npx hardhat docgen"
+    "docgen": "npx hardhat docgen",
+    "release": "standard-version"
   },
   "author": "",
   "license": "ISC",
@@ -21,18 +22,20 @@
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "erc721a": "^4.3.0",
     "hardhat": "^2.19.0",
-    "hardhat-contract-sizer": "^2.10.0"
+    "hardhat-contract-sizer": "^2.10.0",
+    "standard-version": "^9.5.0"
   },
   "dependencies": {
     "@ethereumjs/vm": "^10.0.0",
     "@openzeppelin/contracts": "^4.9.6",
     "@openzeppelin/contracts-upgradeable": "^4.9.6",
-    "c-kzg": "^4.0.0-alpha.1",
+    "c-kzg": "^4.1.0",
     "deasync": "^0.1.30",
     "dotenv": "^16.4.5",
     "ethers": "^6.8.1",
     "hardhat-storage-layout": "^0.1.7",
     "solidity-docgen": "^0.6.0-beta.36",
     "viem": "^2.17.3"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
