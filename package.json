@@ -35,6 +35,7 @@
     "ethers": "^6.8.1",
     "hardhat-storage-layout": "^0.1.7",
     "solidity-docgen": "^0.6.0-beta.36",
+    "tronweb": "^6.1.0",
     "viem": "^2.17.3"
   },
   "packageManager": "yarn@4.10.3"
